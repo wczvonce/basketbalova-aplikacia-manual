@@ -1,11 +1,10 @@
 # Otázky a potvrdenia pre ďalšiu aktualizáciu
 
-Stav k 8. 9. 2026: manuál opisuje overený dodaný kód. Nižšie uvedené odpovede zatiaľ neboli potvrdené. Nepotvrdené číselné príklady sa nepovažujú za nastavenia účtu.
+Stav k 9. 9. 2026: vlastník potvrdil verziu kódu. Aktuálne hodnoty nastavení účtu zatiaľ neboli potvrdené. Nepotvrdené číselné príklady sa nepovažujú za nastavenia účtu.
 
 ## Otázky položené vlastníkovi
 
-1. **Nasadená verzia:** Je `BBALL-AI.zip` totožný s verziou, ktorá sa aktuálne používa, alebo ide o novší/testovací podklad? Potrebné na označenie platnosti manuálu pre prevádzku.
-2. **Aktuálne nastavenia:** TOP X/Y, A/B a minúty; TOP2 X/Y, A/B a PPG; N % pre náhradu, P % pre rozdiel oslabenia a S % pre pokles kurzu. Kód ich číta z účtu; pôvodné čísla 8/10, 4/5, 15, 80/30/30 ich nedokazujú.
+1. **Aktuálne nastavenia:** TOP X/Y, A/B a minúty; TOP2 X/Y, A/B a PPG; N % pre náhradu, P % pre rozdiel oslabenia a S % pre pokles kurzu. Kód ich číta z účtu; pôvodné čísla 8/10, 4/5, 15, 80/30/30 ich nedokazujú.
 
 Odpovede možno doplniť sem ako dátované potvrdenie a premietnuť do kapitol 5 až 7. Neuvádzať heslá, prístupové tokeny ani iné prihlasovacie údaje.
 
@@ -29,4 +28,6 @@ Tieto body nebránia oprave manuálu podľa kódu; uzavrú sa, keď bude dostupn
 
 ## Záznam potvrdení
 
-Zatiaľ bez odpovedí. Pri doplnení použiť dátum, potvrdenú verziu/prostredie, hodnotu a zdroj potvrdenia. Návrhy ani statické odhady nezapisovať ako potvrdené fakty.
+- **9. 9. 2026 – verzia kódu:** vlastník potvrdil, že `BBALL-AI.zip` je najaktuálnejší používaný kód a že z neho čerpáme do manuálu.
+
+Pri ďalších potvrdeniach uviesť dátum, potvrdenú hodnotu a jej rozsah. Návrhy ani statické odhady nezapisovať ako potvrdené fakty.

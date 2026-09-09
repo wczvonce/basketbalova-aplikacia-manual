@@ -12,8 +12,9 @@ podklady a rozlišuje overený kód od starších prevádzkových poznámok.
 - [Technický audit a zdrojové miesta](docs/audit-2026-09-08.md)
 - [Otázky a potvrdenia](docs/otazky-a-potvrdenia.md)
 
-ZIP obsahuje iba časť serverového projektu. Zhoda s nasadenou aplikáciou,
-aktuálne hodnoty účtu, harmonogram úloh a konečný JSON export zostávajú
+Vlastník 9. 9. 2026 potvrdil, že ZIP obsahuje najaktuálnejší používaný kód
+a je hlavným zdrojom pre tento manuál. ZIP však obsahuje iba časť serverového
+projektu; aktuálne hodnoty účtu, harmonogram úloh a konečný JSON export zostávajú
 nepotvrdené. Audit nie je potvrdením bezchybnosti celej aplikácie.
 Samotná aplikácia sa v tomto repozitári neopravuje.
 
