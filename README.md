@@ -4,18 +4,22 @@ Prehľadávateľný slovenský manuál na obsluhu aplikácie BBALL.
 
 [Otvoriť webový manuál](https://wczvonce.github.io/basketbalova-aplikacia-manual/)
 
-Aktualizácia z 8. 9. 2026 vychádza zo statického auditu dodaného `BBALL-AI.zip`.
+Aktualizácia z 10. 9. 2026 prepája statický audit dodaného `BBALL-AI.zip`,
+sedem komentovaných videí mobilu a čítaciu kontrolu otvorenej PC administrácie.
 Opravuje pravidlá TOP/TOP2/WATCH, výpočet oslabenia, náhrady hráčov,
 notifikácie, CSV importy a výklad histórie. Zachováva pôvodné obrazové
 podklady a rozlišuje overený kód od starších prevádzkových poznámok.
 
 - [Technický audit a zdrojové miesta](docs/audit-2026-09-08.md)
+- [Audit videí, hlasu a PC administrácie](docs/audit-2026-09-10.md)
 - [Otázky a potvrdenia](docs/otazky-a-potvrdenia.md)
 
 Vlastník 9. 9. 2026 potvrdil, že ZIP obsahuje najaktuálnejší používaný kód
 a je hlavným zdrojom pre tento manuál. ZIP však obsahuje iba časť serverového
-projektu; aktuálne hodnoty účtu, harmonogram úloh a konečný JSON export zostávajú
-nepotvrdené. Audit nie je potvrdením bezchybnosti celej aplikácie.
+projektu. Nastavenia sú doložené dátovanými snímkami, nie ako pevné defaulty.
+Vlastník 10. 9. potvrdil TEST ako hlavnú pripravovanú verziu; manuál opisuje ju
+a jej testovacie CMS. Produkčné nasadenie je plánované. Harmonogram a obsah
+aktuálneho JSON exportu zostávajú otvorené. Audit nepotvrdzuje bezchybnosť aplikácie.
 Samotná aplikácia sa v tomto repozitári neopravuje.
 
 ## Lokálne otvorenie
