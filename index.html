@@ -577,7 +577,7 @@ po spustení: Zapasy-vsetky_{dateFrom}-{dateTo}_{startTime(yyyyMMdd_HHmmss)}.jso
 <article class="sec" data-group="Export a analýza" data-kw="json struktura subor matchid hometeam awayteam playerstats matchplayerperiods matchplayersdata section statepoints odd kurzy regmatchtime addplayermark missinginlineupmark pointsaverage minutesaverage h2h lastmutualmatches">
 <h2><span class="num">24</span>Štruktúra JSON súboru exportu</h2>
 <div class="note">Názvy polí v tejto kapitole pochádzajú zo starších exportných podkladov. ZIP obsahuje interné modely a prípravu detailu, ale chýba prevod do konečného JSON. Pred spracovaním nového exportu over prítomnosť polí v samotnom súbore. Interné <code>Odds</code> sa napríklad nemusia volať rovnako ako exportné <code>Odd</code>.</div>
-<p>Súbor je <b>pole zápasov</b>. Každý zápas obsahuje:</p>
+<p><b>Rozlišuj exporty:</b> mobilná verzia 1.0.35.0 ukladá <b>jeden objekt zápasu</b> z aktuálne načítaného detailu. Staršie hromadné podklady opisujú pole zápasov; aktuálny CMS export treba overiť na skutočnom súbore. Mobilný export nevyžiada nové údaje zo servera a môže obsahovať klientom doplnené polia. Pred uložením detail obnov a počkaj na úspešné načítanie. <a href="docs/audit-apk-2026-09-10.md">Overenie exportnej obsluhy v APK, K05</a>.</p>
 <h3>Koreňové polia zápasu</h3>
 <ul>
 <li><code>MatchId</code> – ID zápasu · <code>CompetitionId, CompetitionName, LeagueName</code> – súťaž/liga</li>
@@ -757,7 +757,7 @@ Dakujem</pre>
 <li>Ťuknutie na <b>názov tímu</b> otvorí jeho históriu. Čierne výsledky patria otvorenému tímu; červené riadky porovnávajú dnešného súpera proti spoločnému súperovi (PairMatch), nie automaticky vzájomný zápas.</li>
 <li>Číslované kruhy nad súpiskou otvárajú predchádzajúce zápasy na externom webe. Pás kruhov pri hráčovi ukazuje jeho body v jednotlivých zápasoch.</li>
 <li><b>R</b> otvorí rebríček súťaže na webe. Vo videu sa otvorí Flashscore; v PC detaile súťaže Suomen Cup je vyplnený zodpovedajúci URL rebríčka.</li>
-<li>Ikona dvoch prekrývajúcich sa obdĺžnikov v hornom paneli spustí export jedného zápasu. Video potvrdzuje hlásenie o uložení do Downloads: <code>BBALL_JOE_HEL_20260909.json</code>. Obsah súboru nebol dodaný, preto schéma ani úplnosť exportu tým nie sú overené.</li>
+<li>Ikona dvoch prekrývajúcich sa obdĺžnikov v hornom paneli spustí export jedného zápasu. Video potvrdzuje hlásenie o uložení do Downloads: <code>BBALL_JOE_HEL_20260909.json</code>. APK potvrzuje serializáciu jedného aktuálne načítaného objektu, bez nového serverového načítania. Skutočný obsah a úplnosť konkrétneho súboru ešte neboli overené.</li>
 <li>Potiahnutie zápasu doľava <b>v zozname</b> otvorí mobilnú administráciu súťaže. Na videu sú názov, liga, Súťaž pre GS, URL rebríčka, Vyradené mapovanie, Platný, ULOŽIŤ a odkaz TÍMY. Uloženie ani obrazovka TÍMY neboli v nahrávke predvedené.</li>
 </ol>
 <h3>Význam údajov pri hráčovi</h3>
@@ -767,7 +767,7 @@ Dakujem</pre>
 <tr><td>MIN / P / PPG</td><td>Priemerný čas na zápas / body celkom / priemerné body na zápas.</td></tr>
 <tr><td>PPG/M / RPG / RPG/M / AS/M</td><td>Priemerné body na priemerný čas / priemerné doskoky / doskoky na priemerný čas / asistencie na priemerný čas.</td></tr>
 <tr><td>Sivý / modrý / čierny kruh</td><td>Existujú štatistiky / neexistujú štatistiky / nekontrolované štatistiky daného zápasu.</td></tr>
-<tr><td>Ružový otáznik</td><td>„Hráč nehral v zápase“ podľa klientovej legendy. Nie je to univerzálny preklad serverového StatePoints; dekodéry chýbajú.</td></tr>
+<tr><td>Ružový otáznik</td><td>Legenda uvádza „Hráč nehral v zápase“, ale klient pripravuje otáznik aj bez použiteľných bodových údajov. Nie je preto sám osebe dôkazom neúčasti ani univerzálnym prekladom StatePoints. Nula bodov a chýbajúce údaje nie sú to isté.</td></tr>
 <tr><td>Farebné pozadie hráča</td><td><b>Overené z APK 1.0.35.0: ružová = TOP2, zelená = TOP, biela = bežne WATCH, svetložltá = bez označenia</b> (všetky tri príznaky sú 0). TOP2 má prednosť pred TOP. Biela je zároveň fallback pri niektorých neúplných hodnotách, preto sama nezaručuje WATCH. Farba pozadia neoznačuje prítomnosť na ihrisku; nezamieňaj ju s ikonou chýbajúceho hráča ani s kruhom štatistík.</td></tr>
 </table>
 <h3>Ikony podľa legendy v detaile</h3>
@@ -789,7 +789,16 @@ Dakujem</pre>
 <div class="warn"><b>Chyba na reklamáciu:</b> vlastník potvrdil, že <b>2241,00 %</b> v červenom porovnávacom riadku je chybné. Analýza APK ukázala, že tento historický riadok preberá index ako text z modelu PairMatch bez násobenia stovkou. Presnú príčinu treba hľadať ďalej cez konkrétnu API odpoveď, serverové DTO a uložené výpočty. Neopravovať hodnotu odhadom na 22,41 % a nepovažovať ju za pravdepodobnosť výhry.</div>
 <figure><a href="assets/video-2026-09-10/historia-pairmatch.jpg"><img src="assets/video-2026-09-10/historia-pairmatch.jpg" alt="História Kataja s červenými PairMatch riadkami a pozorovaným indexom 2241 percent" width="1080" height="2520" loading="lazy" style="width:100%;max-width:420px"></a><figcaption>Video 123421, približne 00:15. Čierna história otvoreného tímu a červené porovnanie proti spoločnému súperovi.</figcaption></figure>
 <div class="src"><b>Zdroj:</b> videá 122326, 122923, 122955, 123216, 123309, 123421 a 123511; časové odkazy a prepojenie na metódy sú v <a href="docs/audit-2026-09-10.md">doplnkovom audite</a>.</div>
-<p><b>Nové overenie:</b> <a href="docs/audit-apk-2026-09-10.md">statická analýza APK 1.0.35.0</a> uzatvára farby a tlačidlo A. APK pomohlo sprístupniť časť klienta, nenahrádza kompletný pôvodný zdrojový projekt.</p>
+<h3>Ďalšie správanie potvrdené z APK</h3>
+<ul>
+<li><b>Filtre GS/FS:</b> iba jeden zapnutý zdroj obmedzí providerId. Oba zapnuté aj oba vypnuté znamenajú bez tohto obmedzenia, nie prázdny zoznam.</li>
+<li><b>Potiahnutie doprava v Zaujímavých:</b> odstráni riadok a odošle serveru vylúčenie zápasu. Nie je to iba dočasné lokálne skrytie; presný rozsah a trvanie závisia od servera.</li>
+<li><b>Obnovovanie detailu:</b> kladný interval z nastavení riadi mobilný časovač v minútach. Neurčuje frekvenciu serverového importu ani nezaručuje beh na pozadí.</li>
+<li><b>Pripomienka začiatku:</b> je lokálny alarm na čas štartu budúceho zápasu. Je odlišná od serverových upozornení na zostavu či periódu; doručenie závisí aj od Androidu a povolení.</li>
+<li><b>AI profil hráča:</b> najprv sa načíta uložený profil s časom. Ak čas chýba alebo načítanie zlyhá, klient môže automaticky spustiť generovanie. Podporuje aj upraviteľný prompt a výsledok odosiela na uloženie serveru. Otvorenie profilu teda nemusí byť iba čítanie; AI text nie je overenou štatistikou.</li>
+<li><b>Mobilná administrácia:</b> ukladanie súťaže posiela mapovania, URL rebríčka, vyradenie mapovania a platnosť, nie zmenu jej názvu či ligy. Tímové nastavenie posiela ID tímu a dve mapovania.</li>
+</ul>
+<p><b>Podrobný podklad:</b> <a href="docs/audit-apk-2026-09-10.md">14 oblastí statickej analýzy APK 1.0.35.0</a>, vrátane modelu JSON, rozhraní a zoznamu chýbajúcich častí projektu. APK sprístupnilo časť klienta, nenahrádza kompletný pôvodný zdrojový projekt. Pri tomto rozšírení sa aplikácia ani API nespúšťali a údaje sa nemenili.</p>
 </article>
 
 <article class="sec" data-group="Overené ovládanie" id="sec-cms-overenie" data-kw="PC administracia CMS filter export import naplanovat produkcia WATCH">

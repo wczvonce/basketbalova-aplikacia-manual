@@ -12,7 +12,7 @@ podklady a rozlišuje overený kód od starších prevádzkových poznámok.
 
 - [Technický audit a zdrojové miesta](docs/audit-2026-09-08.md)
 - [Audit videí, hlasu a PC administrácie](docs/audit-2026-09-10.md)
-- [Analýza APK: potvrdené farby, tlačidlo A a diagnostika indexu](docs/audit-apk-2026-09-10.md)
+- [Analýza APK: 14 oblastí vrátane farieb, exportu, filtrov, AI profilov a rozhraní](docs/audit-apk-2026-09-10.md)
 - [Otázky a potvrdenia](docs/otazky-a-potvrdenia.md)
 
 Vlastník 9. 9. 2026 potvrdil, že ZIP obsahuje najaktuálnejší používaný kód
