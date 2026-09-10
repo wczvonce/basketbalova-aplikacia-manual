@@ -798,7 +798,14 @@ Dakujem</pre>
 <li><b>AI profil hráča:</b> najprv sa načíta uložený profil s časom. Ak čas chýba alebo načítanie zlyhá, klient môže automaticky spustiť generovanie. Podporuje aj upraviteľný prompt a výsledok odosiela na uloženie serveru. Otvorenie profilu teda nemusí byť iba čítanie; AI text nie je overenou štatistikou.</li>
 <li><b>Mobilná administrácia:</b> ukladanie súťaže posiela mapovania, URL rebríčka, vyradenie mapovania a platnosť, nie zmenu jej názvu či ligy. Tímové nastavenie posiela ID tímu a dve mapovania.</li>
 </ul>
-<p><b>Podrobný podklad:</b> <a href="docs/audit-apk-2026-09-10.md">14 oblastí statickej analýzy APK 1.0.35.0</a>, vrátane modelu JSON, rozhraní a zoznamu chýbajúcich častí projektu. APK sprístupnilo časť klienta, nenahrádza kompletný pôvodný zdrojový projekt. Pri tomto rozšírení sa aplikácia ani API nespúšťali a údaje sa nemenili.</p>
+<h3>Keď sa nastavenie alebo upozornenie správa nejasne</h3>
+<ul>
+<li><b>Sivé nastavenia:</b> mobil ich blokuje aj počas načítania zo servera. Neaktívny ovládač sám neznamená chýbajúce oprávnenie; najprv skontroluj načítanie a prípadnú chybu spojenia.</li>
+<li><b>Uloženie TOP X/Y:</b> klient má nedostatočnú kontrolu odpovede a pri HTTP chybe si môže nesprávne zapamätať aktuálne hodnoty ako uložené. Po zmene nastavenia znovu otvor a over hodnoty načítané zo servera. Samotné hlásenie úspechu nie je pri tejto vetve dostatočný dôkaz.</li>
+<li><b>Upozornenie v popredí:</b> môže sa zobraziť ako vnútorný oznam s X; kliknutie na text otvorí detail. Pri už otvorenom rovnakom zápase sa odovzdáva do existujúcej obrazovky namiesto nového oznamu.</li>
+<li><b>História upozornení:</b> načítava sa zo servera, nie z histórie systémových bannerov telefónu. Záznam v nej nepotvrdzuje prehratie zvuku. Riziká pri chybe alebo konci stránkovania sú uvedené v audite K18 a vyžadujú reprodukčný test.</li>
+</ul>
+<p><b>Podrobný podklad:</b> <a href="docs/audit-apk-2026-09-10.md">19 oblastí statickej analýzy APK 1.0.35.0</a>, vrátane modelu JSON, rozhraní, rizík ukladania a zoznamu chýbajúcich častí projektu. APK sprístupnilo časť klienta, nenahrádza kompletný pôvodný zdrojový projekt. Pri tomto rozšírení sa aplikácia ani API nespúšťali a údaje sa nemenili.</p>
 </article>
 
 <article class="sec" data-group="Overené ovládanie" id="sec-cms-overenie" data-kw="PC administracia CMS filter export import naplanovat produkcia WATCH">
