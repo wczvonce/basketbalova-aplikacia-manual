@@ -768,7 +768,7 @@ Dakujem</pre>
 <tr><td>PPG/M / RPG / RPG/M / AS/M</td><td>Priemerné body na priemerný čas / priemerné doskoky / doskoky na priemerný čas / asistencie na priemerný čas.</td></tr>
 <tr><td>Sivý / modrý / čierny kruh</td><td>Existujú štatistiky / neexistujú štatistiky / nekontrolované štatistiky daného zápasu.</td></tr>
 <tr><td>Ružový otáznik</td><td>„Hráč nehral v zápase“ podľa klientovej legendy. Nie je to univerzálny preklad serverového StatePoints; dekodéry chýbajú.</td></tr>
-<tr><td>Farebné pozadie hráča</td><td>Vlastník 10. 9. doplnil, že ružová a zelená patria TOP skupinám; ružovú si predbežne pamätá ako TOP a bielu/žltú ako WATCH. <b>Presné mapovanie farieb nepotvrdil dodaný kód.</b> Server určuje WATCH = 1, TOP = 2, TOP2 = 3 a pri súbehu vyberá TOP2 → TOP → WATCH. Mobilné priradenie farby k typu v ZIP-e chýba. Farbu pozadia nezamieňať s ikonou chýbajúceho hráča ani s kruhom štatistík.</td></tr>
+<tr><td>Farebné pozadie hráča</td><td><b>Overené z APK 1.0.35.0: ružová = TOP2, zelená = TOP, biela = bežne WATCH, svetložltá = bez označenia</b> (všetky tri príznaky sú 0). TOP2 má prednosť pred TOP. Biela je zároveň fallback pri niektorých neúplných hodnotách, preto sama nezaručuje WATCH. Farba pozadia neoznačuje prítomnosť na ihrisku; nezamieňaj ju s ikonou chýbajúceho hráča ani s kruhom štatistík.</td></tr>
 </table>
 <h3>Ikony podľa legendy v detaile</h3>
 <figure><a href="assets/video-2026-09-10/legenda.jpg"><img src="assets/video-2026-09-10/legenda.jpg" alt="Legenda skratiek, kruhov a ikon v detaile TEST aplikácie BBALL" width="1080" height="2520" loading="lazy" style="width:100%;max-width:420px"></a><figcaption>Video 123216, približne 00:29. Ťuknutím otvoríš snímku v plnom rozlíšení.</figcaption></figure>
@@ -781,14 +781,15 @@ Dakujem</pre>
 <tr><td>Zaškrtnutie v kruhu / glóbus</td><td>Označenie na kontrolu / otvorenie zápasu na webe.</td></tr>
 <tr><td>Reťaz / krivka</td><td>GS/FS prepojenie / prepojenie s kurzami. Zelená: existuje. Červená: neexistuje.</td></tr>
 </table>
-<h3>Tlačidlo A: hranica potvrdenia</h3>
-<p>Vlastník ho opisuje ako sledovanie tímu, ale pri presnom účinku vyjadruje neistotu. Server podporuje používateľské sledovanie tímu cez <code>TeamNotifyTypes.ExistLineup</code>: pred zápasom v riadnej časti, po evidovaní aspoň šiestich hráčov tímu, s kontrolou už odoslaného upozornenia. Klientsky obslužný kód tlačidla A v ZIP-e chýba. <b>Automatické zaradenie každého zápasu tímu medzi TOP nie je potvrdené.</b></p>
+<h3>Tlačidlo A: upozornenie na súpisku tímu</h3>
+<p><b>Overené z APK:</b> A zapína alebo vypína sledovanie tímu typu <code>TeamNotifyTypes.ExistLineup</code>. Nejde o automatické zaradenie zápasov medzi TOP. Server posiela upozornenie pred zápasom v riadnej časti po evidovaní aspoň šiestich hráčov sledovaného tímu, s kontrolou už odoslaného upozornenia. Nezamieňať s potvrdením základnej päťky. Reálne doručenie sa týmto statickým auditom netestovalo.</p>
 <h3>Kurzy, nastavenia a nezvyčajný index</h3>
 <p>Vlastník opisuje dvojicu kurzov ako pôvodný a pred začiatkom zápasu; detail ukazuje napríklad 2,25 / 2,25. Server však pripravuje hodnoty Start/Last s náhradnými zdrojmi (kapitola 9): zobrazené čísla samy nezaručujú rovnakú kanceláriu ani presnú predzápasovú snímku.</p>
 <p>Nastavenia sú meniteľné. Video potvrdzuje TOP2 4/5 a 8/10, prah 5 PPG, WATCH 1/5, 5 minút a 5 PPG, N = 80 % a P = 30 %. Nie sú to pevné defaulty.</p>
-<div class="warn"><b>Otvorené zistenie:</b> v histórii je na červenom porovnávacom riadku zobrazené <b>2241,00 %</b>. Bez surového záznamu a klientského formátovania nemožno určiť, či ide o chybu dát, výpočtu alebo zobrazenia. Neopravovať hodnotu odhadom na 22,41 % a nepovažovať ju za pravdepodobnosť výhry.</div>
+<div class="warn"><b>Chyba na reklamáciu:</b> vlastník potvrdil, že <b>2241,00 %</b> v červenom porovnávacom riadku je chybné. Analýza APK ukázala, že tento historický riadok preberá index ako text z modelu PairMatch bez násobenia stovkou. Presnú príčinu treba hľadať ďalej cez konkrétnu API odpoveď, serverové DTO a uložené výpočty. Neopravovať hodnotu odhadom na 22,41 % a nepovažovať ju za pravdepodobnosť výhry.</div>
 <figure><a href="assets/video-2026-09-10/historia-pairmatch.jpg"><img src="assets/video-2026-09-10/historia-pairmatch.jpg" alt="História Kataja s červenými PairMatch riadkami a pozorovaným indexom 2241 percent" width="1080" height="2520" loading="lazy" style="width:100%;max-width:420px"></a><figcaption>Video 123421, približne 00:15. Čierna história otvoreného tímu a červené porovnanie proti spoločnému súperovi.</figcaption></figure>
 <div class="src"><b>Zdroj:</b> videá 122326, 122923, 122955, 123216, 123309, 123421 a 123511; časové odkazy a prepojenie na metódy sú v <a href="docs/audit-2026-09-10.md">doplnkovom audite</a>.</div>
+<p><b>Nové overenie:</b> <a href="docs/audit-apk-2026-09-10.md">statická analýza APK 1.0.35.0</a> uzatvára farby a tlačidlo A. APK pomohlo sprístupniť časť klienta, nenahrádza kompletný pôvodný zdrojový projekt.</p>
 </article>
 
 <article class="sec" data-group="Overené ovládanie" id="sec-cms-overenie" data-kw="PC administracia CMS filter export import naplanovat produkcia WATCH">
