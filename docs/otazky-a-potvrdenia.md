@@ -5,7 +5,7 @@ Stav k 10. 9. 2026: spracovaných sedem komentovaných videí a čítacia kontro
 ## Konkrétne doplnenia od vlastníka
 
 - **Prostredie uzavreté:** vlastník potvrdil TEST ako hlavnú verziu manuálu, pripravovanú na produkčné nasadenie. Otvoril zodpovedajúce testovacie CMS; staré produkčné CMS nie je referenciou nových funkcií.
-- **Farby hráčov:** ktoré kategórie presne znamenajú ružové, zelené a žlté pozadia? Video ukazuje farby, ale nepriraďuje ich jednoznačne k TOP/TOP2/WATCH.
+- **Farby hráčov, doplnenie vlastníka 10. 9.:** ružová/zelená sú TOP skupiny; ružovú si predbežne pamätá ako TOP, bielu/žltú ako WATCH. Prehľadanie celého dodaného kódu nenašlo mapovanie mobilného pozadia. Potrebujeme klientsky zdroj alebo jeho jednoznačnú legendu, nie opakovanú odpoveď naspamäť. Kód potvrdzuje iba WATCH = 1, TOP = 2, TOP2 = 3 a prioritu TOP2 → TOP → WATCH.
 - **A:** má sledovanie tímu upozorniť na súpisku, alebo aj zaradiť zápas medzi zaujímavé? Hlasový komentár je v tejto časti neistý; server podporuje tímové ExistLineup, klientsky handler chýba.
 - **Ukážka dát:** dodať JSON uložený vo videu (`BBALL_JOE_HEL_20260909.json`). Pomôže overiť schému; pre index 2241 % bude podľa obsahu potrebný aj surový záznam historického zápasu Salon Vilpas - Helsinki Seagulls z 18. 3. 2026.
 
