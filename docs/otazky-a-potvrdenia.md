@@ -1,6 +1,17 @@
 # Otázky a potvrdenia pre ďalšiu aktualizáciu
 
-Stav k 10. 9. 2026: spracovaných sedem komentovaných videí a čítacia kontrola PC administrácie. Ovládanie, legenda, história a mobilný export sú doplnené do kapitol 30 a 31. Hodnoty nastavení môže vlastník kedykoľvek meniť; nejde o pevné defaulty aplikácie.
+Historická snímka k 10. 9. 2026: spracovaných sedem komentovaných videí a čítacia kontrola PC administrácie. Ovládanie, legenda, história a mobilný export sú doplnené do kapitol 30 a 31. Hodnoty nastavení môže vlastník kedykoľvek meniť; nejde o pevné defaulty aplikácie.
+
+## Aktualizácia stavu k 29. 10. 2026
+
+Podrobný záznam: [čo bolo doplnené a kam](aktualizacie-2026-10-29.md). Pôvodné otázky nižšie sú zachované s týmito novšími potvrdeniami:
+
+- **18. 9.:** vývojár potvrdil opravu ukladania TOP X/Y (TEST 1.0.37.0), serverové úpravy náhrad hráčov a kopírovania prepojení/párovania. Nový kód ani výsledok reprodukčného testu nemáme; pri náhradách a prepojeniach uviedol, že nález nemal vplyv na správnu funkčnosť.
+- **18. 9.:** stránkovanie upozornení označil za funkčné. Pre historický index 2241,00 % doložil konkrétny výpočet 22,41 %; plošná oprava historických dát potvrdená nebola.
+- **9. 10.:** na TEST nasadené čistenie starých značiek sledovaných hráčov pri neaktívnych tímoch alebo tímoch bez zápasov, následne nahradenie značiek po vyhodnotení.
+- **17.–18. 10.:** oddelenie účtov podľa prostredia a distribúcia jednej aplikácie cez testovací režim Google Play.
+- **29. 10.:** TEST 1.0.40.0 pridáva čiernu bodku na 4. pozícii zľava pri zmene indexu od notifikácie (TOP / TOP2 podľa typu zápasu). Súčasne oznámené rozšírenie minima piatich zápasov aspoň jedného tímu aj na neskoršie časti GS/FS a pozápasové FS.
+- **Stále otvorené:** produkčné nasadenie októbrových testovacích opráv, nezávislá kontrola nového kódu, presný databázový výber novej kontroly minima a ostatné otázky nižšie, ku ktorým správy nepriniesli potvrdenie.
 
 ## Konkrétne doplnenia od vlastníka
 
@@ -33,14 +44,14 @@ Tieto body nebránia oprave manuálu podľa kódu; uzavrú sa, keď bude dostupn
 | --- | --- | --- |
 | TOP/WATCH a minúty | Je zámer počítať súpisky aj pri DNP a pri chýbajúcich načítaných štatistikách preskočiť prahy? | Potvrdí, či ide o zamýšľané pravidlo alebo požiadavku na opravu aplikácie. |
 | TOP2 | Je zámer vyžadovať Starter, vlastné X/Y a A/B a samostatný PPG prah? | Vysvetlí rozdiel oproti starému výberu podľa najvyššieho PPG. |
-| Náhrada | Potvrdiť hranicu troch evidovaných zápasov a opraviť nesprávne ukladanú identitu náhradníka. | Audit A02; manuál zatiaľ opisuje skutočnú hranicu. |
+| Náhrada | Potvrdiť hranicu troch evidovaných zápasov; úpravu identity náhradníka vývojár oznámil 18. 9., nový kód nebol skontrolovaný. | Audit A02; manuál zatiaľ opisuje skutočnú hranicu. |
 | WATCH parametre | APK odosiela WATCH PPG cez UserApi.saveParam ako používateľský parameter, serverový prepočet ZIP-u číta systémové parametre. Overiť prepojenie endpointu a práva. | Hlavné TEST CMS obsahuje aj prah PPG. Bez obsluhy serverového endpointu nie je potvrdená synchronizácia ani účinok mobilnej zmeny. |
 | Harmonogram | Načítavanie 120 minút pred zápasom, označovanie 2:00, export 4:00, maily 1:25/10:54, kurzy každých 10 minút. | V ZIP-e chýba plánovač; časy sú historické podklady. |
 | Sezóny/archív | Platnosť hranice 1. 8. 2026, ligy s letnou sezónou a aktuálny stav archivácie. | Audit A01/A08, význam tímového priemeru a dostupnej histórie. |
 | Export | Aktuálny vzor JSON, aktívny exportér, DTO a časový význam štatistík/kurzov. | Presná schéma, uchovanie predzápasového stavu a možnosť korektnej simulácie. |
 | StatePoints | Ako konkrétne GS/FS dekodéry priraďujú 1 a 2 pri DNP, chýbajúcich a nulových štatistikách. | Rozlíšenie dátovej neúplnosti od skutočného nenastúpenia. |
 | Kurzy | Aktuálna čítačka, výber kancelárie a zhodnosť zdroja pre detail a filter. | Audit A04/A06; správna strana tímu a porovnateľné Start/Last. |
-| Prenos mapovaní | Potvrdiť a otestovať opravu obnovy tímových väzieb v novej sezóne. | Audit A03; neoznačovať operáciu za bezchybnú len podľa úspešnej správy. |
+| Prenos mapovaní | Vývojár 18. 9. potvrdil úpravu kopírovania prepojení/párovania; zostáva otestovať obnovu tímových väzieb v novej sezóne. | Audit A03; neoznačovať operáciu za bezchybnú len podľa úspešnej správy. |
 | Klient/CMS | Legenda, farby, A a hlavné postupy overené aj z APK; chýba úplný pôvodný klient/CMS projekt a testy GS operácií. | Dekompilácia nie je úplný zdroj a mala čiastkové chyby. |
 
 ## Záznam potvrdení
