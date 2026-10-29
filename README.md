@@ -4,7 +4,9 @@ Prehľadávateľný slovenský manuál na obsluhu aplikácie BBALL.
 
 [Otvoriť webový manuál](https://wczvonce.github.io/basketbalova-aplikacia-manual/)
 
-Aktualizácia z 10. 9. 2026 prepája statický audit dodaného `BBALL-AI.zip`,
+Aktualizácia z 29. 10. 2026 zapracúva septembrové a októbrové potvrdenia vývojára vrátane TEST 1.0.40.0, čiernej bodky pri zmene indexu, rozšírenia kontroly piatich zápasov a opravy starých označení hráčov. [Presný zoznam zmien a kapitol](docs/aktualizacie-2026-10-29.md) je aj v kapitole 32 webového manuálu. Oznámené opravy odlišujeme od nezávislého auditu a od nasadenia do prevádzky.
+
+Pôvodná aktualizácia z 10. 9. 2026 prepája statický audit dodaného `BBALL-AI.zip`,
 sedem komentovaných videí mobilu a čítaciu kontrolu otvorenej PC administrácie.
 Opravuje pravidlá TOP/TOP2/WATCH, výpočet oslabenia, náhrady hráčov,
 notifikácie, CSV importy a výklad histórie. Zachováva pôvodné obrazové
