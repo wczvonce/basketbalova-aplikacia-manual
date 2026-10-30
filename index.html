@@ -95,7 +95,7 @@ footer{max-width:1200px;margin:0 auto;padding:10px 20px 40px;color:var(--muted);
 
 <div class="audit-status">
 <p><a href="#sec-updates-2026-10"><b>Čo pribudlo a v ktorých kapitolách →</b></a></p>
-<p><b>Aktualizované 29. 10. 2026 podľa správ vývojára zo septembra a októbra. Pôvodný audit kódu, videí a PC administrácie: 8.–10. 9. 2026.</b></p>
+<p><b>Aktualizované 30. 10. 2026 podľa správ vývojára vrátane posledných potvrdení k PPG, WATCH a histórii zápasov. Pôvodný audit kódu, videí a PC administrácie: 8.–10. 9. 2026.</b></p>
 <p><b>Hlavná verzia pre tento manuál je aktuálna TEST verzia</b>, ktorú vlastník ešte testuje a plánuje nasadiť ako produkčnú. Jej CMS je <a href="https://bball-admin-test.car-market.sk/ligy">bball-admin-test.car-market.sk</a>. Overené boli videá tejto verzie aj jej otvorená administrácia, iba čítaním bez ukladania zmien. Staršia produkcia bola použitá len na porovnanie. Plánovač, klientsky kód a kompletný exportér v potvrdenom BBALL-AI.zip chýbajú.</p>
 <p><a href="#sec-mobil">Mobilné ovládanie a legenda</a> · <a href="#sec-cms-overenie">Overená PC administrácia</a> · <a href="docs/audit-2026-09-10.md">Audit videí a administrácie</a></p>
 <p><a href="#sec-audit">Zmeny a hranice auditu</a> · <a href="docs/audit-2026-09-08.md">Technický audit</a> · <a href="docs/otazky-a-potvrdenia.md">Otvorené otázky</a></p>
@@ -222,7 +222,8 @@ footer{max-width:1200px;margin:0 auto;padding:10px 20px 40px;color:var(--muted);
 <tr><td><b>Kontroly a notifikácie</b></td><td>Celá zostava pred zápasom zapnutá; notifikácie zápasov z Flashscore vypnuté; iba TOP zápasy zapnuté; prijímanie notifikácií zapnuté.</td></tr>
 <tr><td><b>OpenAI model</b></td><td><code>gpt-5-mini</code>.</td></tr>
 </table>
-<h3>Aktuálne kritériá overené v kóde</h3>
+<h3>Kritériá podľa septembrového auditu kódu</h3>
+<p>Pri TOP/TOP2 čítaj tabuľku spolu s novším potvrdením z 29. 10. nižšie: spojenie X/Y a A/B sa v e-maile odlišuje od auditovaného kódu.</p>
 <table>
 <tr><th>Typ</th><th>Počet zápasov</th><th>Štatistický prah</th><th>Komu patrí nastavenie</th></tr>
 <tr><td><b>TOP</b></td><td>X z posledných Y <b>alebo</b> A z posledných B. Počíta sa záznam hráča v súpiske.</td><td>Minimálny priemer minút.</td><td>Používateľ.</td></tr>
@@ -248,6 +249,11 @@ footer{max-width:1200px;margin:0 auto;padding:10px 20px 40px;color:var(--muted);
 <h3>Oprava starých označení sledovaných hráčov – TEST, 9. 10. 2026</h3>
 <ol><li>Najprv sa určia aktívne tímy, pre ktoré sa budú zisťovať sledovaní hráči.</li><li>Odstránia sa staré označenia hráčov tímov, ktoré sa nebudú vyhodnocovať, pretože sú neaktívne.</li><li>Ak vyhodnocovaný tím ešte nemá žiadny zápas, odstránia sa jeho existujúce označenia.</li><li>Ak zápasy existujú, po vyhodnotení tímu sa staré označenia nahradia novými.</li></ol>
 <p>Oprava rieši napríklad zostávajúce TOP2 označenia z minulého obdobia pri tíme, ktorý ešte v sledovanom období nehral. Bola potvrdená ako nasadená na testovacom serveri; e-mail jej nepriraďuje nové číslo mobilnej verzie ani nepotvrdzuje produkčné nasadenie. Nemení uvedené prahy TOP/TOP2/WATCH.</p><p class="src"><b>Aktualizácia 29. 10. 2026:</b> podľa potvrdení Petra Škantára; dátumy a rozsah sú v <a href="#sec-updates-2026-10">prehľade aktualizácií</a>. Nový zdrojový kód ani APK neboli auditované.</p>
+<h3>Potvrdenie vývojára k WATCH, TOP a TOP2 – 29.–30. 10. 2026</h3>
+<p>Ak má hráč načítané štatistiky z webu, pre WATCH musí súčasne splniť <b>počet zápasov X/Y, priemerný čas aj priemerné body</b>. Ak štatistiky z webu nemá, minútový a bodový prah sa nekontrolujú a pre WATCH stačí splniť X/Y. Ide o potvrdenie už opísanej výnimky, nie o oznámenie novej zmeny prahov.</p>
+<p><b>Dopočítané PPG sa pri zaradení medzi sledovaných hráčov nepoužíva.</b> Vývojár 30. 10. výslovne potvrdil používanie iba štatistík načítaných z webu. Samotné zobrazenie dopočítaného PPG preto neznamená, že sa ním vyhodnotí bodový prah.</p>
+<div class="warn"><b>TOP/TOP2 – rozpor zdrojov:</b> vývojár 29. 10. uviedol, že pri chýbajúcich štatistikách sa prahy preskočia aj pre TOP/TOP2, ale musí byť splnené <b>X/Y aj A/B</b>. Septembrový audit v tabuľke vyššie uvádza <b>X/Y alebo A/B</b>. Aktuálne potvrdenie vývojára je „aj“; bez nového kódu alebo doplňujúceho potvrdenia nemožno určiť, či ide o zmenu implementácie alebo nepresnú formuláciu. Rozpor ostáva otvorený.</div>
+<p class="src">Zdroj: správy k BBALL TEST – PPG a WATCH, 29. 10. 2026 o 22:51 a 30. 10. 2026 o 11:33 (čas Slovenska). Nová verzia aplikácie ani produkčné nasadenie v nich nie sú uvedené.</p>
 </article>
 
 <article class="sec" data-group="Hráči a sledovanie" data-kw="nastavenia chybajucich hracov pravidla uzivatela zaujimavy zapas typy sledovania zakladna zostava celkova zostava ihrisko pop up zvoncek 3/2 notifikacia">
@@ -732,6 +738,9 @@ Dakujem</pre>
 <li>Archivovaný zápas už nemá údaje (presunuté do archívu) – v administrácii oranžová ikona.</li>
 </ul>
 <div class="src"><b>Zdroj:</b> Gmail – Re_ Reklamacie.PDF · Doplnenie administracie – zoznam teamov a zapasov.docx</div>
+<h3>História v detaile obmedzená od 1. 8. 2026 – potvrdené 30. 10.</h3>
+<p>Vývojár potvrdil úpravu troch oblastí detailu zápasu: <b>URL posledných zápasov, posledné zápasy jednotlivých hráčov tímu a posledné zápasy tímu</b>. Načítavajú sa od <b>1. 8. 2026</b>. Pred úpravou mohli kruhy zobrazovať aj staršie zápasy, hoci dopočítané PPG už používalo hranicu 1. 8. 2026.</p>
+<p>Správa sa týka vlákna TEST. Neuvádza nové číslo verzie ani nepotvrdzuje zmenu výpočtu tímového AVG10 alebo odstránenie starých údajov z databázy. Historické poznámky vyššie preto nepredstavujú aktuálne pravidlo zobrazovania detailu.</p>
 </article>
 
 <article class="sec" data-group="Audit a diagnostika" id="sec-audit" data-kw="audit kod zip aktualizacia zmeny overene neistota verzia nasadenie 2026">
@@ -771,6 +780,10 @@ Dakujem</pre>
 <h3>Po prebratí sezóny chýbajú prepojenia alebo nesedia kurzy</h3>
 <p>Skontroluj pôvodnú aj novú súťaž, väzby na tímy a konkrétny zápas. Porovnaj oboch súperov a domáce/hosťovské strany. Audit našiel riziká v automatickom mapovaní aj obnove prenášaných väzieb.</p>
 <h3>Staré TOP2 označenie alebo rozdiel oproti notifikácii</h3><p>Pri starých značkách tímu bez zápasov over, či prostredie obsahuje serverovú opravu z 9. 10. (kapitola 5). Pri rozdiele indexov porovnaj text notifikácie s posledným vyhodnotením; od TEST 1.0.40.0 sleduj čiernu bodku na štvrtej pozícii zľava (kapitola 8). Pri minime piatich zápasov rozlišuj starší stav do 27. 10. a opravu potvrdenú 29. 10.</p><p class="src"><b>Aktualizácia 29. 10. 2026:</b> podľa potvrdení Petra Škantára; dátumy a rozsah sú v <a href="#sec-updates-2026-10">prehľade aktualizácií</a>. Nový zdrojový kód ani APK neboli auditované.</p>
+<h3>WATCH pri PPG 0,0 a čase 0:00</h3>
+<p>Najprv over, či má hráč štatistiky načítané z webu. Ak nie, podľa potvrdení z 29.–30. 10. sa kontroluje iba X/Y; dopočítané PPG nenahrádza webovú štatistiku pri zaradení. Samotné nulové hodnoty preto nedokazujú chybné označenie WATCH.</p>
+<h3>PPG nesedí s bodmi v starších kruhoch</h3>
+<p>Dopočítané PPG používa zápasy od 1. 8. 2026. Vývojár pri Sowah M. vysvetlil, že v tomto období mala jediný zápas 20. 10. s nulou bodov, preto bolo PPG 0,0 správne napriek bodom v starších kruhoch. Od úpravy potvrdenej 30. 10. má rovnakú dátumovú hranicu aj história v detaile (kapitola 27).</p>
 </article>
 
 <article class="sec" data-group="Overené ovládanie" id="sec-mobil" data-kw="video mobil gesto potiahnutie swipe legenda farby otaznik kruhy JSON download A R TEST historia PairMatch">
@@ -834,6 +847,9 @@ Dakujem</pre>
 </ul>
 <p><b>Podrobný podklad:</b> <a href="docs/audit-apk-2026-09-10.md">19 oblastí statickej analýzy APK 1.0.35.0</a>, vrátane modelu JSON, rozhraní, rizík ukladania a zoznamu chýbajúcich častí projektu. APK sprístupnilo časť klienta, nenahrádza kompletný pôvodný zdrojový projekt. Pri tomto rozšírení sa aplikácia ani API nespúšťali a údaje sa nemenili.</p>
 <h3>Doplnené vysvetlenia k auditu – 18. 9. 2026</h3><p><b>História upozornení:</b> vývojár označil načítanie ďalších stránok za funkčné; neoznámil opravu stránkovania. Pôvodné riziko zo statického auditu preto nie je potvrdenou prevádzkovou chybou.</p><p><b>Historických 2241,00 %:</b> vývojár pre konkrétny zápas Salon Vilpas – Helsinki Seagulls doložil výpočet 18,80 ÷ 83,9 ≈ 22,41 % a opísal zmeny výpočtu TOP/TOP2 z 25. 5. a percentuálneho zobrazenia z 23. 7. Toto vysvetlenie nie je potvrdením opravy všetkých historických záznamov. Hodnoty v dátach sa touto úpravou manuálu nemenia.</p><p class="src"><b>Aktualizácia 29. 10. 2026:</b> podľa potvrdení Petra Škantára; dátumy a rozsah sú v <a href="#sec-updates-2026-10">prehľade aktualizácií</a>. Nový zdrojový kód ani APK neboli auditované.</p>
+<h3>Doplnenie detailu a PPG – 30. 10. 2026</h3>
+<p>URL posledných zápasov, história jednotlivých hráčov aj história tímu v detaile sú podľa vývojára obmedzené na zápasy od <b>1. 8. 2026</b>. Toto je novšie pravidlo oproti septembrovým videám.</p>
+<p>Pri chýbajúcich webových štatistikách sa môže zobraziť dopočítané PPG zo zápasov od 1. 8. 2026. <b>Takéto PPG sa nepoužíva pre zaradenie medzi sledovaných hráčov</b>; podmienky a výnimky vysvetľuje kapitola 5. Nulové dopočítané PPG nemusí byť chybou (príklad v kapitole 29).</p>
 </article>
 
 <article class="sec" data-group="Overené ovládanie" id="sec-cms-overenie" data-kw="PC administracia CMS filter export import naplanovat produkcia WATCH">
@@ -856,7 +872,7 @@ Dakujem</pre>
 
 <article class="sec" id="sec-updates-2026-10" data-group="Aktualizácie" data-kw="aktualizacie update zmeny skantar september oktober 1.0.40.0 cierna bodka gulicka minimum pat zapasov android 17">
 <h2><span class="num">32</span>Aktualizácie september – október 2026: čo a kam pribudlo</h2>
-<p>Prehľadané správy vývojára za obdobie 29. 8. – 29. 10. 2026. Záznamy nižšie odlišujú oznámené opravy od vysvetlení staršieho správania. Hlavným prostredím manuálu zostáva TEST; nasadenie testovacích zmien do prevádzky nepredpokladáme bez potvrdenia.</p>
+<p>Prehľadané správy vývojára za obdobie 29. 8. – 29. 10. 2026; 30. 10. doplnené posledné dve správy z 29. 10. o 22:51 a 30. 10. o 11:33. Záznamy nižšie odlišujú oznámené opravy od vysvetlení staršieho správania. Hlavným prostredím manuálu zostáva TEST; nasadenie testovacích zmien do prevádzky nepredpokladáme bez potvrdenia.</p>
 <table><tr><th>Dátum správy (2026)</th><th>Zapracované doplnenie</th><th>Kapitoly</th></tr><tr><td>14. 9.</td><td>Android 17, prevádzková 1.0.36.1</td><td>1</td></tr>
 <tr><td>18. 9.</td><td>TEST 1.0.37.0: ukladanie TOP X/Y; serverové úpravy náhrad a prepojení/párovania; vysvetlenie histórie percent a stránkovania</td><td>1, 7, 12, 30, 31</td></tr>
 <tr><td>28. 9.; 17.–18. 10.</td><td>Prevádzková 1.0.38.0, oddelenie účtov a spôsob distribúcie TEST/prevádzka</td><td>1</td></tr>
@@ -865,13 +881,19 @@ Dakujem</pre>
 <tr><td>29. 10.</td><td>TEST 1.0.40.0: čierna bodka na 4. pozícii, TOP/TOP2 porovnanie indexov; rozšírené minimum piatich zápasov pri GS/FS</td><td>1, 2, 3, 6, 8, 29, 30</td></tr></table>
 <p>V kapitole 28 bol opravený všeobecný výrok, že žiadna z auditovaných chýb ešte nebola opravená. Historické audity z 8.–10. 9. ostali zachované ako záznam pôvodnej verzie. Nový kód ani APK neboli pri tomto doplnení kontrolované; pri opravách uvádzame potvrdenie vývojára, nie nezávislé otestovanie.</p>
 <p><a href="docs/aktualizacie-2026-10-29.md">Podrobný zoznam zmien a zdrojových správ</a> · <a href="docs/otazky-a-potvrdenia.md">Aktualizovaný stav otvorených otázok</a></p>
+<h3>Kontrola posledných dvoch e-mailov – 30. 10. 2026</h3>
+<ul><li><b>Už obsiahnuté:</b> výnimka pri chýbajúcich načítaných štatistikách a dátumová hranica náhradného PPG; doplnené výslovné potvrdenie vývojára.</li>
+<li><b>Kapitola 5:</b> WATCH vyžaduje všetky tri podmienky pri dostupných webových štatistikách; inak len X/Y. Dopočítané PPG sa na zaradenie nepoužíva. Pri TOP/TOP2 označený rozpor „aj“ oproti septembrovému „alebo“.</li>
+<li><b>Kapitoly 27 a 30:</b> nové obmedzenie všetkých troch uvedených oblastí histórie detailu od 1. 8. 2026.</li>
+<li><b>Kapitola 29:</b> diagnostika nulového PPG a WATCH; príklad Sowah M.</li></ul>
+<p><a href="docs/aktualizacie-2026-10-30.md">Presný rozsah doplnenia a otvorený rozpor</a>. Tieto správy neoznamujú nové číslo mobilnej verzie ani produkčné nasadenie.</p>
 </article>
 
 <div id="noResults"><b>Nič sa nenašlo.</b><br>Skús iné slovo – napr. „kurzy", „mail", „export", „hráči", „widget", „server"…</div>
 </main>
 </div>
 
-<footer>Doplnené podľa správ vývojára: 29. 10. 2026. <a href="#sec-updates-2026-10">Prehľad zmien</a>. Pôvodné podklady: poznámky a maily „basket apka manual“, 16. 8. 2026. Audit kódu: 8. 9. 2026. Overenie siedmimi videami a PC administráciou: 10. 9. 2026. <a href="docs/audit-2026-09-10.md">Rozsah doplneného auditu</a>.</footer>
+<footer>Doplnené podľa správ vývojára: 30. 10. 2026. <a href="#sec-updates-2026-10">Prehľad zmien</a>. Pôvodné podklady: poznámky a maily „basket apka manual“, 16. 8. 2026. Audit kódu: 8. 9. 2026. Overenie siedmimi videami a PC administráciou: 10. 9. 2026. <a href="docs/audit-2026-09-10.md">Rozsah doplneného auditu</a>.</footer>
 
 <script>
 (function(){

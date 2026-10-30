@@ -2,6 +2,13 @@
 
 Historická snímka k 10. 9. 2026: spracovaných sedem komentovaných videí a čítacia kontrola PC administrácie. Ovládanie, legenda, história a mobilný export sú doplnené do kapitol 30 a 31. Hodnoty nastavení môže vlastník kedykoľvek meniť; nejde o pevné defaulty aplikácie.
 
+## Aktualizácia stavu k 30. 10. 2026
+
+- **29. 10., 22:51 a 30. 10., 11:33:** potvrdená výnimka WATCH pri chýbajúcich webových štatistikách: stačí X/Y; dopočítané PPG sa na zaradenie nepoužíva. Pri dostupných webových štatistikách sa vyžadujú všetky tri podmienky.
+- **30. 10.:** potvrdené obmedzenie URL posledných zápasov, histórie jednotlivých hráčov aj histórie tímu v detaile od 1. 8. 2026. Nejde o potvrdenie zmeny AVG10.
+- **Otvorený rozpor TOP/TOP2:** vývojár 29. 10. pri chýbajúcich štatistikách uvádza X/Y **aj** A/B, septembrový kód X/Y **alebo** A/B. Treba potvrdiť aktuálny operátor a prípadný dátum zmeny. Kód nebol nanovo auditovaný.
+- [Rozsah doplnenia a kapitoly](aktualizacie-2026-10-30.md).
+
 ## Aktualizácia stavu k 29. 10. 2026
 
 Podrobný záznam: [čo bolo doplnené a kam](aktualizacie-2026-10-29.md). Pôvodné otázky nižšie sú zachované s týmito novšími potvrdeniami:
@@ -42,12 +49,12 @@ Tieto body nebránia oprave manuálu podľa kódu; uzavrú sa, keď bude dostupn
 
 | Téma | Čo treba overiť | Dopad |
 | --- | --- | --- |
-| TOP/WATCH a minúty | Je zámer počítať súpisky aj pri DNP a pri chýbajúcich načítaných štatistikách preskočiť prahy? | Potvrdí, či ide o zamýšľané pravidlo alebo požiadavku na opravu aplikácie. |
-| TOP2 | Je zámer vyžadovať Starter, vlastné X/Y a A/B a samostatný PPG prah? | Vysvetlí rozdiel oproti starému výberu podľa najvyššieho PPG. |
+| TOP/WATCH a minúty | Preskočenie prahov bez webových štatistík potvrdené 29.–30. 10.; zostáva otázka počítania súpisiek pri DNP. | Potvrdí, či ide o zamýšľané pravidlo alebo požiadavku na opravu aplikácie. |
+| TOP2 | Potvrdiť Starter a najmä rozpor X/Y alebo A/B (septembrový kód) oproti X/Y aj A/B bez webových štatistík (správa 29. 10.). | Vysvetlí rozdiel oproti starému výberu podľa najvyššieho PPG. |
 | Náhrada | Potvrdiť hranicu troch evidovaných zápasov; úpravu identity náhradníka vývojár oznámil 18. 9., nový kód nebol skontrolovaný. | Audit A02; manuál zatiaľ opisuje skutočnú hranicu. |
 | WATCH parametre | APK odosiela WATCH PPG cez UserApi.saveParam ako používateľský parameter, serverový prepočet ZIP-u číta systémové parametre. Overiť prepojenie endpointu a práva. | Hlavné TEST CMS obsahuje aj prah PPG. Bez obsluhy serverového endpointu nie je potvrdená synchronizácia ani účinok mobilnej zmeny. |
 | Harmonogram | Načítavanie 120 minút pred zápasom, označovanie 2:00, export 4:00, maily 1:25/10:54, kurzy každých 10 minút. | V ZIP-e chýba plánovač; časy sú historické podklady. |
-| Sezóny/archív | Platnosť hranice 1. 8. 2026, ligy s letnou sezónou a aktuálny stav archivácie. | Audit A01/A08, význam tímového priemeru a dostupnej histórie. |
+| Sezóny/archív | Hranica 1. 8. 2026 pre dopočítané PPG a históriu detailu potvrdená 29.–30. 10.; otvorené zostávajú letné ligy, AVG10 a archivácia. | Audit A01/A08, význam tímového priemeru a dostupnej histórie. |
 | Export | Aktuálny vzor JSON, aktívny exportér, DTO a časový význam štatistík/kurzov. | Presná schéma, uchovanie predzápasového stavu a možnosť korektnej simulácie. |
 | StatePoints | Ako konkrétne GS/FS dekodéry priraďujú 1 a 2 pri DNP, chýbajúcich a nulových štatistikách. | Rozlíšenie dátovej neúplnosti od skutočného nenastúpenia. |
 | Kurzy | Aktuálna čítačka, výber kancelárie a zhodnosť zdroja pre detail a filter. | Audit A04/A06; správna strana tímu a porovnateľné Start/Last. |
