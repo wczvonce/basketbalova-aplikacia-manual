@@ -25,19 +25,22 @@ Značky: **✔** = vyskúšané v emulátore, **GH** = podľa GitHub manuálu, *
 
 - **Zmena prostredí:** pôvodná TEST verzia (s TOP2 hráčmi) prešla do prevádzky. Prevádzkový účet je odvtedy **ivan.povraznik@gmail.com** a testovací **wczvonce@gmail.com**, teda naopak ako predtým. Podľa čísel zápasov sa databázy rozdelili okolo 4. – 5. 11. 2026 (tabuľka nižšie).
 - **Appka 1.0.50.0 v emulátoroch** je natvrdo nastavená na **prevádzkové API** (`bball-api.car-market.sk`). Iná adresa servera v balíku nie je. Prihlásený je **ivan.povraznik@gmail.com** (prevádzkový účet). V oboch administráciách existujú oba účty: „Ivan Povraznik“ (wczvonce, ID 6) aj „Ivan Povraznik 2“ (ivan.povraznik, ID 8). Prevádzka už má TOP2 hráčov.
-- **Ktorá administrácia patrí appke (overené 8. 11. 15:10 podľa čísel zápasov):** testovacia `bball-admin-test` má **inú databázu** ako appka:
+- **Ktorá administrácia patrí appke ✔ (overené 8. 11. 2026 o 15:10 a 16:00 podľa čísel zápasov):** appka číta databázu **prevádzkovej** administrácie `bball-admin`. Testovacia `bball-admin-test` má **inú databázu**:
 
-  | Zápas | Číslo v appke (JSON) | Číslo v `bball-admin-test` |
-  |---|---|---|
-  | Independiente – Racing de Chivilcoy, 4. 11. | 473107 | **473107** (rovnaké) |
-  | Al-Riyadi – Chabeb Batroun, 5. 11. | 473658 | 473331 |
-  | Falcon – Aabyhøj, 6. 11. | 473713 | 473636 (GS) / 473454 (FS) |
-  | Batumi – TSU, 7. 11. | 474182 | 474057 (GS) / 473750 (FS) |
-  | Barcelona – Breogan, 8. 11. | 474496 | 474283 (číslo 474496 je v teste iný zápas, NCAA Women) |
+  | Zápas | Appka (JSON) | `bball-admin` (prevádzka) | `bball-admin-test` |
+  |---|---|---|---|
+  | Independiente – Racing de Chivilcoy, 4. 11. (FS) | 473107 | **473107** | 473107 |
+  | Al-Riyadi – Chabeb Batroun, 5. 11. (GS) | 473658 | **473658** | chýba (FS verzia 473331 je v oboch) |
+  | Falcon – Aabyhøj, 6. 11. (GS) | 473713 | **473713** | 473636 (FS verzia 473454 je v oboch) |
+  | Batumi – TSU, 7. 11. (GS) | 474182 | **474182** | 474057 (FS: prevádzka 473851, test 473750) |
+  | Barcelona – Breogan, 8. 11. (FS) | 474496 | **474496** | 474283 (474496 je v teste iný zápas, NCAA Women) |
 
-  Do 4. 11. boli obe databázy jedna (rovnaké čísla). Okolo 4. – 5. 11. sa rozdelili a odvtedy obe samostatne načítavajú zápasy z GS aj FS. Appka (aj Ivanov mobil) teda **nečíta** testovaciu databázu. Prevádzková je podľa údajov `bball-admin` + `bball-api` a testovacia je `bball-admin-test`.
-  Priamo v `bball-admin` som čísla neoveril, lebo 8. 11. o 15:00 už chcela znova prihlásiť. Ivan však potvrdil, že prevádzka = ivan.povraznik (odpoveď na otázku 1).
-- **Testovacia administrácia** (8. 11.): rovnakých 9 používateľov s rovnakými ID, rovnaké systémové nastavenia (WATCH 2 / 5 / 10 min / 7 b., OpenAI gpt-5-mini) a 305 422 zápasov s najnovšími na 9. – 10. 11. V zozname hráčov je vo filtri „Užívateľ“ iba **Povraznik 2 Ivan** (ivan.povraznik). Ten má označených hráčov Sledovaný / TOP / **TOP2** (napr. Tatum, Lillard, Mitchell).
+  Zápasy založené do ~3. 11. majú v oboch rovnaké čísla (napr. Hyundai – Batumi 473100, Tbilisi – Batumi 473273). Okolo 4. – 5. 11. sa databázy rozdelili a odvtedy obe samostatne načítavajú GS aj FS. Prevádzka mala 8. 11. o 16:00 305 695 zápasov, test o 15:10 305 422.
+  **Záver:** prevádzka = `bball-admin` + `bball-api` (appka, Ivanov mobil), test = `bball-admin-test` + `bball-api-test`.
+- **Prevádzková administrácia 8. 11. 16:00:** filter Hráči → Užívateľ ponúka **App Test1** a **Povraznik 2 Ivan**. Ivan (ivan.povraznik) má označené desiatky hráčov TOP2 (zoradené podľa TOP2: prvých 50 má TOP2 = 1). Nastavenia sú rovnaké ako v teste.
+- ⚠️ **Účet wczvonce@gmail.com (ID 6) je v oboch administráciách sivý = neaktívny** (riadok `row_disabled`). Aktívny je ivan.povraznik (ID 8). Ak sa má wczvonce používať na test, treba ho v testovacej administrácii zrejme aktivovať. Nerobil som to.
+- **Prihlásenie do administrácií sa navzájom ruší** (pozorované 8. 11.): po prihlásení do `bball-admin-test` chcela `bball-admin` znova prihlásenie a naopak. Naraz je v jednom Chrome prihlásená iba jedna.
+- **Testovacia administrácia** (8. 11.): rovnakých 9 používateľov s rovnakými ID, rovnaké systémové nastavenia (WATCH 2 / 5 / 10 min / 7 b., OpenAI gpt-5-mini) a 305 422 zápasov s najnovšími na 9. – 10. 11. V zozname hráčov je vo filtri „Užívateľ“ iba **Povraznik 2 Ivan** (ivan.povraznik). Ten má označených hráčov Sledovaný / TOP / **TOP2** (napr. Tatum, Lillard, Mitchell). Sú to zrejme značky prenesené zo spoločnej databázy spred rozdelenia.
 - Od 17. 10. sa do každého prostredia dá prihlásiť iba jeho určeným účtom (GH kap. 1). Teraz to znamená: prevádzka = ivan.povraznik, test = wczvonce. Pri zmene prostredia na tom istom telefóne vývojár radí appku odinštalovať, prípadne vymazať jej dáta.
 - Pri chybe servera („HTTP Error 503“) sa reštart žiada cez Webglobe Podpora/Helpdesk (GH kap. 26).
 
@@ -59,7 +62,7 @@ Systémové Späť na hlavnej obrazovke: „Chcete ukončiť aplikáciu?“
 
 ## 3. Zoznam zápasov ✔ (02, 05)
 - **Lievik vpravo hore = Filter** (kap. 4). Android ho chybne opisuje ako „Načítať nanovo“.
-- Potiahnutie zoznamu dole ho znova načíta. Ďalšie zápasy sa donačítavajú pri rolovaní.
+- Potiahnutie zoznamu dole ho znova načíta, ale iba keď je zoznam už úplne hore. Ak nie je, prvé potiahnutie ho len vráti hore a obnoví až druhé ✔ (8. 11.). Ďalšie zápasy sa donačítavajú pri rolovaní.
 
 ### Gestá na zápase ⚠️
 | Gesto | Čo urobí |
@@ -99,7 +102,9 @@ Pri teste som každú ikonu zapol a hneď vypol (okrem pripomienky, tá sa vypn�
 **f) „> Časti zápasu“ + krúžky vpravo**: ťuk rozbalí štvrtiny. Ťuk na štvrtinu otvorí detail na tej štvrtine ✔.
 - **Zelené krúžky = zostavy** (vysvetlil Ivan): **prázdne** = k zápasu ešte nie sú zostavy ani v appke, ani na webe. **Prvý plný** = nabehla **súpiska** (celková zostava). **Druhý plný** = nabehla aj **základná zostava** (kto začne na ihrisku). Zodpovedá to filtru „Celková zostava“ / „Základná zostava“ (kap. 4).
   - **Test 8. 11. 15:20 – 15:35** (skript `manual/skenuj_kruzky.py`, ~580 zápasov): každý zápas mal **oba prázdne alebo oba plné**, ani jeden nemal plný iba prvý. Filter „Celková zostava“ ukázal 81 zápasov, filter „Základná zostava“ 37 zápasov a všetky mali oba plné. Zápasy po 15:30 mali prázdne. GS zápas o 16:00 (Nevezis – Šiauliai) mal 25 min pred začiatkom v detaile „Nenašli sa žiadne údaje“. Súpiska a základná zostava teda zvyčajne nabehnú naraz, najčastejšie tesne pred začiatkom alebo pri ňom. Pri niektorých zápasoch nenabehnú vôbec (napr. 14:00 a 15:00 zápasy s prázdnymi krúžkami aj po začiatku).
-  - Stav „iba prvý plný“ treba ešte zachytiť (sledovať zápas od ~30 min pred začiatkom).
+  - **Nevezis – Šiauliai, 8. 11. o 16:00:** GS zápas mal o 15:35 prázdne krúžky („Nenašli sa žiadne údaje“), o 16:11 oba plné. FS verzia toho istého zápasu mala o 16:11 stále prázdne. GS teda zostavy dostal okolo začiatku zápasu. Medzistav som nezachytil, lebo sledovanie zle zapisovalo.
+  - **Maroussi – Olympiacos, 8. 11. o 16:30:** GS zápas mal o 16:4x oba plné, index 13,70 % a v detaile chýbajúcich hráčov aj hráčov na ihrisku. FS verzia mala stále prázdne. Presný čas naplnenia nemám, lebo jedno potiahnutie zoznamu ho iba vráti hore. **Na obnovenie treba potiahnuť dvakrát** (alebo potiahnuť, keď je zoznam už úplne hore).
+  - **Záver testu:** pri GS nabehnú súpiska aj základná zostava naraz okolo začiatku zápasu, takže sa plnia oba krúžky naraz. Stav „iba prvý plný“ sa za celé popoludnie neukázal. Možno sa objaví pri FS zápasoch, kde Flashscore zverejní súpisku skôr ako základnú päťku. Treba ho ešte zachytiť.
 - **Čierny krúžok** (vľavo od zelených, ✔ videný 8. 11. pri Salon Vilpas – Antwerp Giants) = **údaje zápasu sa zmenili**. Napr. v noci appka znova prejde zápasy, a keď sa na webe zmenili zostavy, zmenia sa aj v appke. Podľa GH (od TEST 1.0.40.0) sa tým zmení index oslabenia oproti hodnote v notifikácii (GH kap. 8).
 - ⚠️ V **exporte JSON** sú polia `ExistLineupMark`, `ExistStarterMark` a `ChangeIndexTeamMark` vždy 0, aj keď appka ukazuje plné krúžky (overené na 11 JSON-och, napr. Batumi – TSU, Falcon – Aabyhøj).
 
