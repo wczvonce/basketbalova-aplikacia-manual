@@ -6,6 +6,8 @@ Prehľadávateľný slovenský manuál na obsluhu aplikácie BBALL.
 
 Aktualizácia z 8. 11. 2026: prostredia a účty sa vymenili. Prevádzka = `ivan.povraznik@gmail.com`, test = `wczvonce@gmail.com`. Pôvodná TEST verzia s TOP2 hráčmi je v prevádzke, mobilná appka 1.0.50.0 ide na prevádzkové API `bball-api.car-market.sk`. Upravené kapitoly 1 a 22.
 
+Nová kapitola z 8. 11. 2026: [Podrobné ovládanie mobilnej appky 1.0.50.0 a administrácie](docs/mobilna-appka-1.0.50-2026-11-08.md) – každé tlačidlo a ikona, krúžky zostáv, NOVÝ HRÁČ, filter, administrácia v appke aj na webe, prevádzka vs. test. Vyskúšané v emulátore a doplnené Ivanovými odpoveďami.
+
 Aktualizácia z 30. 10. 2026 dopĺňa posledné dve správy vývojára: históriu detailu od 1. 8. 2026, potvrdenie výnimky WATCH a nepoužívanie dopočítaného PPG pri zaradení. Rozpor TOP/TOP2 „aj“ oproti „alebo“ je výslovne označený na overenie. [Zoznam zmien](docs/aktualizacie-2026-10-30.md).
 
 Aktualizácia z 29. 10. 2026 zapracúva septembrové a októbrové potvrdenia vývojára vrátane TEST 1.0.40.0, čiernej bodky pri zmene indexu, rozšírenia kontroly piatich zápasov a opravy starých označení hráčov. [Presný zoznam zmien a kapitol](docs/aktualizacie-2026-10-29.md) je aj v kapitole 32 webového manuálu. Oznámené opravy odlišujeme od nezávislého auditu a od nasadenia do prevádzky.
