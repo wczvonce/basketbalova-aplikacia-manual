@@ -2,6 +2,17 @@
 
 Historická snímka k 10. 9. 2026: spracovaných sedem komentovaných videí a čítacia kontrola PC administrácie. Ovládanie, legenda, história a mobilný export sú doplnené do kapitol 30 a 31. Hodnoty nastavení môže vlastník kedykoľvek meniť; nejde o pevné defaulty aplikácie.
 
+## Aktualizácia stavu k 9. 11. 2026
+
+Audit všetkých e-mailov vývojára: [čo sa zmenilo a podľa ktorých správ](aktualizacie-2026-11-09.md). Pri rozpore platí novší e-mail.
+
+- **Prostredie:** od 3. 11. 2026 beží nová verzia (dovtedy TEST) v prevádzke; manuál opisuje ju. Staršie body nižšie o TEST ako „pripravovanej“ verzii sú historické.
+
+- **Otvorené – GS naprieč súťažami:** e-mail 27. 3. 2026 uvádza, že vyhľadávanie zápasov GS tímov naprieč súťažami je vypnuté v teste aj prevádzke; septembrový kód spája GS tímy cez `InternalId`. Hráči GS nie sú medzi súťažami prepojení (24. 4. 2026). Treba potvrdiť, ktoré výpočty dnes súťaže spájajú.
+- **TOP/TOP2:** podľa pravidla „platí novší e-mail“ pri chýbajúcich webových štatistikách X/Y **aj** A/B (29. 10. 2026); pri dostupných štatistikách X/Y **alebo** A/B + priemer minút/PPG. Na hráčovi neoverené.
+- **Uzavreté e-mailom:** AVG10 iba z predchádzajúcich zápasov (7. 11.), nočné označovanie o 3:00 (3. 2.), zdroj kurzov FS/GS (29. 1., 1.–4. 3.), archivácia na teste (13. 5. 2025).
+- **Čaká na vývojára:** oprava zostáv FS po zmene z 8. 11., index aktuálneho zápasu v mobilnom JSON-e, kópia JSON-u do Supabase a reklamácia neskorých zostáv (8. 11.).
+
 ## Aktualizácia stavu k 30. 10. 2026
 
 - **29. 10., 22:51 a 30. 10., 11:33:** potvrdená výnimka WATCH pri chýbajúcich webových štatistikách: stačí X/Y; dopočítané PPG sa na zaradenie nepoužíva. Pri dostupných webových štatistikách sa vyžadujú všetky tri podmienky.

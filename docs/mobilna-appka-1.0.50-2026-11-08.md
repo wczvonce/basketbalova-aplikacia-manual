@@ -23,7 +23,7 @@ Značky: **✔** = vyskúšané v emulátore, **GH** = podľa GitHub manuálu, *
 | **Účet (platí teraz, potvrdil Ivan 8. 11. 2026)** | **ivan.povraznik@gmail.com** | **wczvonce@gmail.com** |
 | Účet do zmeny (GH, 17. 10. 2026) | wczvonce@gmail.com | ivan.povraznik@gmail.com |
 
-- **Zmena prostredí:** pôvodná TEST verzia (s TOP2 hráčmi) prešla do prevádzky. Prevádzkový účet je odvtedy **ivan.povraznik@gmail.com** a testovací **wczvonce@gmail.com**, teda naopak ako predtým. Podľa čísel zápasov sa databázy rozdelili okolo 4. – 5. 11. 2026 (tabuľka nižšie).
+- **Zmena prostredí:** pôvodná TEST verzia (s TOP2 hráčmi) prešla do prevádzky. Prevádzkový účet je odvtedy **ivan.povraznik@gmail.com** a testovací **wczvonce@gmail.com**, teda naopak ako predtým. Podľa čísel zápasov sa databázy rozdelili okolo 4. – 5. 11. 2026 (tabuľka nižšie). Zodpovedá to e-mailu vývojára z 3. 11.: nové programy nasadil nad existujúcu prevádzkovú databázu, aby ostali súťaže sezóny 2026/27, a testovaciu appku pozastavil (GH kap. 1).
 - **Appka 1.0.50.0 v emulátoroch** je natvrdo nastavená na **prevádzkové API** (`bball-api.car-market.sk`). Iná adresa servera v balíku nie je. Prihlásený je **ivan.povraznik@gmail.com** (prevádzkový účet). V oboch administráciách existujú oba účty: „Ivan Povraznik“ (wczvonce, ID 6) aj „Ivan Povraznik 2“ (ivan.povraznik, ID 8). Prevádzka už má TOP2 hráčov.
 - **Ktorá administrácia patrí appke ✔ (overené 8. 11. 2026 o 15:10 a 16:00 podľa čísel zápasov):** appka číta databázu **prevádzkovej** administrácie `bball-admin`. Testovacia `bball-admin-test` má **inú databázu**:
 
@@ -47,7 +47,7 @@ Značky: **✔** = vyskúšané v emulátore, **GH** = podľa GitHub manuálu, *
 ---
 
 ## 1. Prihlásenie ✔ (01)
-Polia **Email** a **Heslo**, tlačidlá **PRIHLÁSIŤ** a **OBNOVIŤ HESLO** (príde email s postupom). Pri prvom spustení treba **povoliť notifikácie**.
+Polia **Email** a **Heslo**, tlačidlá **PRIHLÁSIŤ** a **OBNOVIŤ HESLO**. Obnovenie funguje od 5. 11. 2026: príde e-mail s odkazom, ten otvorí v administrácii stránku *Obnovenie hesla*, po zmene sa do appky prihlás novým heslom (prihlasovaciu stránku administrácie, ktorá sa potom ukáže, ignoruj). Pri prvom spustení treba **povoliť notifikácie**.
 
 ## 2. Navigácia ✔
 **Spodná lišta:**
@@ -93,7 +93,7 @@ Pri teste som každú ikonu zapol a hneď vypol (okrem pripomienky, tá sa vypn�
 **c) Kurzy a dátum**: `1,67 / 1,84 ↑  07.11.2026 11:00  2,03 / 1,84 ↓`
 - vľavo domáci, vpravo hostia. Dvojica čísel = **otvárací / posledný kurz** (Start/Last) na víťaza vrátane predĺženia,
 - šípka ↑ zelená / ↓ červená = smer zmeny kurzu,
-- kurzy sa čítajú z BetsAPI (Tipsport, inak priemer kancelárií) každých 10 min, od 90 min pred zápasom (GH kap. 9–10). Zápas bez kurzov má iba dátum.
+- **odkiaľ sú kurzy** (oprava 9. 11. 2026 podľa e-mailov vývojára z 29. 1. a 1.–4. 3. 2026): **FS** zápas má kurzy z Flashscore (Tipsport, ak chýba, priemer ostatných nepreškrtnutých kancelárií vrátane Nike), **GS** zápas má kurzy z BetsAPI cez priradenie súťaže (čítanie každých 10 min, od 90 min pred zápasom). Prepojenie s BetsAPI je možné iba pre GS (GH kap. 9–10). Zápas bez kurzov má iba dátum.
 
 **d) Tímy**: `Gimnasia (3)`. Číslo v zátvorke = **poradie v tabuľke súťaže**. Pri FS je z tabuľky FlashScore, pri GS iba pre tímy previazané na kurzy (GH kap. 19).
 
@@ -105,7 +105,7 @@ Pri teste som každú ikonu zapol a hneď vypol (okrem pripomienky, tá sa vypn�
   - **Nevezis – Šiauliai, 8. 11. o 16:00:** GS zápas mal o 15:35 prázdne krúžky („Nenašli sa žiadne údaje“), o 16:11 oba plné. FS verzia toho istého zápasu mala o 16:11 stále prázdne. GS teda zostavy dostal okolo začiatku zápasu. Medzistav som nezachytil, lebo sledovanie zle zapisovalo.
   - **Maroussi – Olympiacos, 8. 11. o 16:30:** GS zápas mal o 16:4x oba plné, index 13,70 % a v detaile chýbajúcich hráčov aj hráčov na ihrisku. FS verzia mala stále prázdne. Presný čas naplnenia nemám, lebo jedno potiahnutie zoznamu ho iba vráti hore. **Na obnovenie treba potiahnuť dvakrát** (alebo potiahnuť, keď je zoznam už úplne hore).
   - **Záver testu:** pri GS nabehnú súpiska aj základná zostava naraz okolo začiatku zápasu, takže sa plnia oba krúžky naraz. Stav „iba prvý plný“ sa za celé popoludnie neukázal. Možno sa objaví pri FS zápasoch, kde Flashscore zverejní súpisku skôr ako základnú päťku. Treba ho ešte zachytiť.
-- **Čierny krúžok** (vľavo od zelených, ✔ videný 8. 11. pri Salon Vilpas – Antwerp Giants) = **údaje zápasu sa zmenili**. Napr. v noci appka znova prejde zápasy, a keď sa na webe zmenili zostavy, zmenia sa aj v appke. Podľa GH (od TEST 1.0.40.0) sa tým zmení index oslabenia oproti hodnote v notifikácii (GH kap. 8).
+- **Čierny krúžok** (vľavo od zelených, ✔ videný 8. 11. pri Salon Vilpas – Antwerp Giants) = **index oslabenia sa zmenil oproti hodnote v notifikácii** (od TEST 1.0.40.0, GH kap. 8). Podľa analýzy vývojára zo 6.–7. 11. 2026 to väčšinou NIE je zmena zostavy: mení sa PPG chýbajúcich hráčov, do 7. 11. aj AVG10 po skončení FS zápasu (opravené) a po nočnom označení nových sledovaných hráčov. Zmenu zostavy počas zápasu označuje **červený** krúžok.
 - ⚠️ V **exporte JSON** sú polia `ExistLineupMark`, `ExistStarterMark` a `ChangeIndexTeamMark` vždy 0, aj keď appka ukazuje plné krúžky (overené na 11 JSON-och, napr. Batumi – TSU, Falcon – Aabyhøj).
 
 ---
@@ -173,7 +173,7 @@ Skupiny: **Chýbajúci hráči** (🚫 pred číslom = sledovaný hráč, ktorý
 
 **Krúžky bodov** (11, história od 1. 8. 2026):
 - **sivý s číslom** = body, štatistiky existujú,
-- **modrý** = neexistujú štatistiky,
+- **modrý** = neexistujú štatistiky. Od 24.–25. 4. 2026: ak má štatistiku aspoň jeden hráč zápasu, náhradník bez štatistík dostane **sivú 0**; modrú 0 majú všetci iba vtedy, keď v zápase nemá štatistiku nikto (doplní sa pri nočnom opakovanom čítaní),
 - **čierny** = nekontrolované štatistiky,
 - **ružový „?“** = hráč nehral, alebo pre zápas chýbajú bodové údaje (nemusí znamenať DNP),
 - **prázdny** = zápas nie je.
@@ -221,7 +221,7 @@ Ako to funguje (GH kap. 5):
 - Keď tím nemá Y zápasov, pravidlo sa zníži (8/10 → 7/7).
 - Priorita: TOP2 → TOP → WATCH.
 - **WATCH je systémové nastavenie** (web: Systém → Nastavenia). Rovnaké hodnoty 2/5/10/7 sú tam aj v prevádzke.
-- **TOP/TOP2: „alebo“ alebo „aj“?** Starší kód (september) hovorí, že stačí splniť X/Y **alebo** A/B. Vývojár 29. 10. napísal, že treba splniť X/Y **aj** A/B. **Pravidlo od Ivana: pri rozpore platí novší e-mail vývojára** → teraz platí **aj** (obe podmienky). Na konkrétnom hráčovi to zatiaľ nie je overené.
+- **TOP/TOP2: „alebo“ alebo „aj“?** Starší kód (september) hovorí, že stačí splniť X/Y **alebo** A/B. Vývojár 29. 10. napísal, že keď hráč **nemá štatistiky z webu**, treba splniť X/Y **aj** A/B. **Pravidlo od Ivana: pri rozpore platí novší e-mail vývojára** → bez webových štatistík platí **aj**, so štatistikami **alebo** (+ priemer minút pri TOP, PPG pri TOP2), ako uvádzajú aj e-maily z 12. 3., 20. 3. a 28. 4. 2026 (GH kap. 5). Na konkrétnom hráčovi to zatiaľ nie je overené.
 - **TOP2 = úplne najlepší hráči tímu, TOP = dobrí hráči** (Ivan). Čo presne znamená TOP2, nastavuje Ivan v Nastaveniach (tabuľka vyššie).
 - **Dnešné hodnoty sú zámerné** (Ivan, 8. 11.): prísnejší WATCH (2/5, 10 min, 7 PPG), notifikácie aj z Flashscore, iba TOP zápasy a steam 100 %. Cieľ: pípajú iba úplne najlepšie zápasy a v appke sa neukazujú najslabší hráči, ktorí skoro nehrávajú.
 

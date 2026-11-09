@@ -4,6 +4,8 @@ Prehľadávateľný slovenský manuál na obsluhu aplikácie BBALL.
 
 [Otvoriť webový manuál](https://wczvonce.github.io/basketbalova-aplikacia-manual/)
 
+Audit z 9. 11. 2026: manuál porovnaný so všetkými e-mailmi vývojára (január 2025 – 9. 11. 2026), pri rozpore platí novší e-mail. Opravené AVG10, čas nočného behu, zdroj kurzov, archivácia a ďalšie body; nová kapitola 33. [Zoznam zmien a otvorených bodov](docs/aktualizacie-2026-11-09.md).
+
 Aktualizácia z 8. 11. 2026: prostredia a účty sa vymenili. Prevádzka = `ivan.povraznik@gmail.com`, test = `wczvonce@gmail.com`. Pôvodná TEST verzia s TOP2 hráčmi je v prevádzke, mobilná appka 1.0.50.0 ide na prevádzkové API `bball-api.car-market.sk`. Upravené kapitoly 1 a 22.
 
 Nová kapitola z 8. 11. 2026: [Podrobné ovládanie mobilnej appky 1.0.50.0 a administrácie](docs/mobilna-appka-1.0.50-2026-11-08.md) – každé tlačidlo a ikona, krúžky zostáv, NOVÝ HRÁČ, filter, administrácia v appke aj na webe, prevádzka vs. test. Vyskúšané v emulátore a doplnené Ivanovými odpoveďami.
@@ -26,8 +28,8 @@ podklady a rozlišuje overený kód od starších prevádzkových poznámok.
 Vlastník 9. 9. 2026 potvrdil, že ZIP obsahuje najaktuálnejší používaný kód
 a je hlavným zdrojom pre tento manuál. ZIP však obsahuje iba časť serverového
 projektu. Nastavenia sú doložené dátovanými snímkami, nie ako pevné defaulty.
-Vlastník 10. 9. potvrdil TEST ako hlavnú pripravovanú verziu; manuál opisuje ju
-a jej testovacie CMS. Produkčné nasadenie je plánované. Harmonogram a obsah
+Vlastník 10. 9. potvrdil TEST ako hlavnú pripravovanú verziu; od 3. 11. 2026 beží
+v prevádzke a manuál opisuje ju. Harmonogram a obsah
 aktuálneho JSON exportu zostávajú otvorené. Audit nepotvrdzuje bezchybnosť aplikácie.
 Samotná aplikácia sa v tomto repozitári neopravuje.
 
